@@ -15,11 +15,13 @@ services:
     container_name: logstash
     image: logstash:2.1.1
     network_mode: host
+    ports:
+      - "5044:5044"
     volumes:
       - ./logstash/conf.d:/etc/logstash/conf.d:ro
       - ./var/log:/host/var/log:ro
     command: logstash -f /etc/logstash/conf.d
-    #command: logstash -f /etc/logstash/conf.d --debug
+    # command: logstash -f /etc/logstash/conf.d --debug
 
   kibana:
     container_name: kibana

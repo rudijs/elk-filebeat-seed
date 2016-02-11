@@ -18,7 +18,7 @@ services:
     volumes:
       - ./logstash/conf.d:/etc/logstash/conf.d:ro
       - ./var/log:/host/var/log:ro
-    command: logstash -f /etc/logstash/conf.d --debug
+    command: logstash -f /etc/logstash/conf.d
     #command: logstash -f /etc/logstash/conf.d --debug
 
   kibana:

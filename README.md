@@ -14,3 +14,8 @@ Kibana Sense Plugin
 Clean slate
 
 - `sudo docker-compose down`
+
+
+
+Remote
+mkdir /opt/{esdata,logstash}

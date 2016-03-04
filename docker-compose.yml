@@ -5,28 +5,35 @@ services:
     container_name: elasticsearch
     image: elasticsearch:2.1.1
     network_mode: host
+    restart: always
     ports:
       - "9200:9200"
     volumes:
-      - ./esdata:/usr/share/elasticsearch/data
+      - /opt/esdata:/usr/share/elasticsearch/data
     command: -Des.network.bind_host=0.0.0.0
 
   logstash:
     container_name: logstash
     image: logstash:2.1.1
+    depends_on:
+      - elasticsearch
     network_mode: host
+    restart: always
     ports:
       - "5044:5044"
     volumes:
-      - ./logstash/conf.d:/etc/logstash/conf.d:ro
-      - ./var/log:/host/var/log:ro
+      - /opt/logstash/conf.d:/etc/logstash/conf.d:ro
+      # - ./var/log:/host/var/log:ro
     command: logstash -f /etc/logstash/conf.d
     # command: logstash -f /etc/logstash/conf.d --debug
 
   kibana:
     container_name: kibana
     image: kibana:4.3.1
+    depends_on:
+      - elasticsearch
     network_mode: host
+    restart: always
     ports:
       - "5601:5601"
     environment:

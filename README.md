@@ -6,8 +6,8 @@ Centralized logging with Elasticsearch, Logstash, Kibana and Filebeat
 
 This code repository is a work in progress.
 
-- Create a two tier AWS cluster
-- Launch Docker containers of required software
+1. Terraform - Create a two tier AWS cluster
+2. docker-machine and docker-compose - Launch Docker containers of required software
 
 ## Usage
 
